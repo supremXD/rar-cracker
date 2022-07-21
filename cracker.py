@@ -1,20 +1,28 @@
 import os, time
 
-def decoracion():
-    print("              |                    1 -->> Download the files (obligatory)")
-    print("              |                    2 -->> Extract the hash of the rar")
-    print("              |                    3 -->> Crack the hash")
-    print("              |                    4 -->> Exit")    
+def start_menu():
+    os.system("clear")
+    while True:
+        options()
+
+def options():
+    print("              |                    1 -->> Extract the hash of the rar")
+    print("              |                    2 -->> Crack the hash")
+    print("              |                    3 -->> Exit")    
     option = input("              +-> ")
 
     if option == "1":
-        files()
+        hash()
 
     if option == "2":
-        ddos()
+        crack()
 
     if option == "3":
-        phishing()
+        exit()
 
-    if option == "4":
-        wpscan()
+def hash():
+    os.system("clear")
+    print("")
+    filenamehash = input("Complete file name -----> ")
+    os.system("clear")
+    os.system("rar2john "+filenamehash+" > hash.txt")
