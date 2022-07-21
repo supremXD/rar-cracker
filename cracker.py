@@ -23,6 +23,22 @@ def options():
 def hash():
     os.system("clear")
     print("")
-    filenamehash = input("Complete file name -----> ")
+    filenamehash = input("Complete file name (with path) -----> ")
+    os.system("mv "+filenamehash+" rar.rar")
     os.system("clear")
-    os.system("rar2john "+filenamehash+" > hash.txt")
+    os.system("rm -f hash.txt")
+    os.system("rar2john rar.rar > hash.txt")
+    os.system("sed -i 's/rar.rar://g' hash.txt")
+    os.system("mv rar.rar "+filenamehash+"")
+    time.sleep(5)
+    os.system("clear")
+    print("")
+    os.system("hashcat -m 13000 -a3 'hash.txt' ?d?d?d?d")
+
+def crack():
+    os.system("clear")
+    print("")
+    os.system("hashcat -m 13000 -a3 'hash.txt' ?d?d?d?d")
+
+
+start_menu()
